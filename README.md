@@ -1,48 +1,147 @@
-# DDR_REPORT
-AI+Streamlit+image
 # 🏗️ Automated DDR (Detailed Diagnostic Report) Generator
 
-An AI-powered multimodal workflow that converts raw technical site inspection documents and thermal reports into structured, client-ready diagnostic reports.
+### Transforming Raw Site Data into Intelligent, Client-Ready Reports
 
-## 🚀 Live Demo & Video
-- **Live Link:** [View App](https://ddrreport-edtqymab8enywh4zz2rxap.streamlit.app/)
-- **Loom Video Explanation:** [Watch Video Link Here]
-
-## 🛠️ The Challenge
-Converting raw site data into professional reports is time-consuming and prone to human error. This project solves:
-1. **Logical Merging:** Automatically connecting visual observations with thermal temperature anomalies.
-2. **Contextual Image Placement:** Mapping specific site photos to the correct textual observation instead of just providing a gallery.
-3. **Data Integrity:** Handling missing information and conflicting data between different report sources.
-
-## 🧠 System Architecture & Workflow
-1. **Extraction Engine:** Uses `PyMuPDF` with spatial coordinate analysis to extract text and evidence photos. It implements a geometric filter to skip document artifacts (logos, divider lines) and capture only high-resolution site evidence.
-2. **Indexing & Tagging:** Extracted images are indexed with surrounding text context. 
-3. **AI Reasoning (LLM):** Powered by `Groq Llama-3.3-70B`. The system analyzes the merged context of Inspection and Thermal reports to identify root causes and severity.
-4. **Dynamic Renderer:** A custom regex-based parser that injects site photos directly under the relevant observations in the final Markdown report.
-
-## 💻 Tech Stack
-- **Language:** Python 3.10+
-- **LLM:** Llama-3.3-70B-Versatile (via Groq Cloud)
-- **Framework:** Streamlit (Frontend/UI)
-- **PDF Processing:** PyMuPDF (fitz) & Pillow
-- **Data Handling:** Regex, Dotenv, Multimodal Context Mapping
-
-## ✨ Key Features
-- **Smart Filtering:** Automatically ignores company logos and header/footer elements.
-- **Multimodal Merging:** Syncs visual findings (Dampness) with thermal readings (Cold spots/Temperatures).
-- **Rule-Based Reliability:** Explicitly handles missing data with "Not Available" tags and highlights data conflicts.
-- **Downloadable Reports:** Generates professional Markdown deliverables.
-
-## ⚙️ Local Setup
-1. Clone the repo: `git clone https://github.com/sonali131/DDR_REPORT.git`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Add your Groq API Key in a `.env` file: `GROQ_API_KEY=your_key_here`
-4. Run the app: `streamlit run app.py`
-
-## 🚧 Limitations & Improvements
-- **Current Limitation:** Token limits of the Groq Free Tier require text truncation for very large PDFs.
-- **Future Scope:** Integrating a **Vision-Language Model (VLM)** like LLaVA or GPT-4o for direct image-to-text analysis and using a **Vector Database (RAG)** for processing year-long site history.
+An AI-powered **multimodal reporting system** that converts raw inspection documents and thermal reports into structured, insightful, and visually aligned diagnostic reports—reducing manual effort and eliminating human error.
 
 ---
-**Candidate:** Sonali Mishra  
-**Role:** AI Generalist / Applied AI Builder Assignment
+
+## 🚀 Live Demo & Walkthrough
+
+* 🔗 **Live Application:** https://ddrreport-edtqymab8enywh4zz2rxap.streamlit.app/
+* 🎥 **Video Explanation:** *[Add Loom Link Here]*
+
+---
+
+## 🛠️ Problem Statement
+
+Generating professional diagnostic reports from site inspections is:
+
+* ⏳ Time-consuming
+* ❌ Error-prone
+* 🔗 Difficult to correlate across multiple data sources
+
+### This project solves:
+
+* **🔄 Intelligent Data Merging**
+  Seamlessly connects **visual observations** with **thermal anomalies** for accurate insights.
+
+* **🖼️ Context-Aware Image Placement**
+  Automatically embeds site images **exactly where they belong**, instead of dumping them in a gallery.
+
+* **🛡️ Data Integrity & Reliability**
+  Detects missing or conflicting inputs and clearly marks them (e.g., *"Not Available"*), ensuring transparency.
+
+---
+
+## 🧠 System Architecture & Workflow
+
+### 1. 📄 Extraction Engine
+
+* Built using **PyMuPDF (fitz)** with spatial coordinate analysis
+* Filters out noise like logos, headers, and dividers
+* Extracts only **relevant text + high-quality site images**
+
+### 2. 🏷️ Contextual Indexing
+
+* Tags images with nearby textual content
+* Creates **semantic linkage** between visuals and observations
+
+### 3. 🤖 AI Reasoning Layer
+
+* Powered by **Llama-3.3-70B (via Groq Cloud)**
+* Performs:
+
+  * Root cause analysis
+  * Severity detection
+  * Cross-document reasoning
+
+### 4. 🧾 Dynamic Report Renderer
+
+* Regex-based parser
+* Injects images directly under corresponding observations
+* Outputs a **clean, structured Markdown report**
+
+---
+
+## 💻 Tech Stack
+
+| Category           | Technology                        |
+| ------------------ | --------------------------------- |
+| **Language**       | Python 3.10+                      |
+| **LLM**            | Llama-3.3-70B (Groq Cloud)        |
+| **Frontend**       | Streamlit                         |
+| **PDF Processing** | PyMuPDF (fitz), Pillow            |
+| **Data Handling**  | Regex, Dotenv, Multimodal Mapping |
+
+---
+
+## ✨ Key Features
+
+* ✅ **Smart Noise Filtering**
+  Ignores logos, headers, and irrelevant artifacts automatically
+
+* 🔗 **Multimodal Correlation**
+  Aligns visual issues (e.g., dampness) with thermal data (e.g., cold spots)
+
+* ⚖️ **Rule-Based Reliability**
+  Handles incomplete or conflicting data explicitly
+
+* 📥 **Export-Ready Reports**
+  Generates professional, client-ready Markdown outputs
+
+---
+
+## ⚙️ Local Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/sonali131/DDR_REPORT.git
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Add your Groq API Key
+echo "GROQ_API_KEY=your_key_here" > .env
+
+# Run the app
+streamlit run app.py
+```
+
+---
+
+## 🚧 Limitations & Future Improvements
+
+### ⚠️ Current Limitation
+
+* Groq Free Tier token limits require truncation for very large PDFs
+
+### 🚀 Future Enhancements
+
+* 🧠 Integrate **Vision-Language Models (VLMs)** (e.g., LLaVA, GPT-4o) for direct image understanding
+* 🗂️ Add **Vector Database (RAG)** for long-term site history analysis
+* 📊 Advanced analytics dashboards for trend detection
+
+---
+
+## 👩‍💻 Candidate Profile
+
+**Sonali Mishra**
+🎯 *AI Generalist | Applied AI Builder*
+
+* Expertise in **AI-powered applications, LLMs, and full-stack development**
+* Passionate about building **real-world, scalable AI solutions**
+
+---
+
+## 💡 Why This Project Stands Out
+
+This isn’t just a report generator—it’s a **decision-support system** that:
+
+* Thinks across multiple data modalities
+* Maintains data integrity
+* Produces actionable, structured insights
+
+👉 Designed with **real industry challenges in mind**, making it highly relevant for applied AI roles.
+
+---
