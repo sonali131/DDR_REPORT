@@ -9,7 +9,7 @@ An AI-powered **multimodal reporting system** that converts raw inspection docum
 ## 🚀 Live Demo & Walkthrough
 
 * 🔗 **Live Application:** https://ddrreport-edtqymab8enywh4zz2rxap.streamlit.app/
-* 🎥 **Video Explanation:** *[Add Loom Link Here]*
+* 🎥 **Video Explanation:** *https://drive.google.com/drive/folders/1juWVqIxLeLL2Y5_u5baV4pfAAWgUL4JJ?usp=drive_link*
 
 ---
 
